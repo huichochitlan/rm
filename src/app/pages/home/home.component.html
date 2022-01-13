@@ -13,7 +13,7 @@
         <div class="box-tools">
             <ul class="pagination pagination-sm no-margin pull-right">
                 <li><a href="#" (click)="paginacion(-1)" >&laquo;</a></li>
-                <li *ngFor="let n of numSequence(TotalPaginas); let i = index;">
+                <li *ngFor="let n of numSequence(10); let i = index;">
                     <a href="#" (click)="paginacion(i+1)" 
                     [ngClass]="{
                         'text-red': PaginaActual === i+1                        
