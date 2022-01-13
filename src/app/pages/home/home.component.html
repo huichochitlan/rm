@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3" *ngFor="let personaje of listaPersonajes">
+            <div class="col-12">
+                <img [src]="personaje.image" class="personaje">
+            </div>
+            <div class="col-12">
+                <div class="text-center">
+                    <h2>{{ personaje.name }}</h2>
+                    <p>{{ personaje.estatus }}<br>{{ personaje.type }}<br>{{ personaje.gender }}</p>        
+                </div>            
+            </div>                
+        </div>    
+    </div>    
+</div>
