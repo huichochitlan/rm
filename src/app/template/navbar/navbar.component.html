@@ -1,0 +1,135 @@
+<nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+    <div class="container">
+        <a href="#home" class="navbar-brand">
+            <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">AdminLTE 3</span>
+        </a>
+
+        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="index3.html" class="nav-link">{{ this.Usuario.loggedIn }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
+                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                        <li><a href="#" class="dropdown-item">Some action </a></li>
+                        <li><a href="#" class="dropdown-item">Some other action</a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Level two dropdown-->
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
+                            <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                                <li>
+                                    <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
+                                </li>
+
+                                <!-- Level three dropdown-->
+                                <li class="dropdown-submenu">
+                                    <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
+                                    <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
+                                        <li><a href="#" class="dropdown-item">3rd level</a></li>
+                                        <li><a href="#" class="dropdown-item">3rd level</a></li>
+                                    </ul>
+                                </li>
+                                <!-- End Level three -->
+
+                                <li><a href="#" class="dropdown-item">level 2</a></li>
+                                <li><a href="#" class="dropdown-item">level 2</a></li>
+                            </ul>
+                        </li>
+                        <!-- End Level two -->
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- SEARCH FORM -->
+            <form class="form-inline ml-0 ml-md-3">
+                <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Right navbar links -->
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto" >
+
+            <li class="nav-item" *ngIf="!this.Usuario.loggedIn">
+                <a class="nav-link" href="#">
+                    Inicia con:
+                  </a> 
+                <!-- <p>Inicia con:</p> -->
+                <!-- <button [routerLink]="['/login']" type="button" class="btn btn-block btn-outline-primary">Ingresar</button> -->
+            </li>
+
+            <li class="nav-item" (click)="this.Usuario.signInWithFB()" *ngIf="!this.Usuario.loggedIn">
+                <a class="nav-link">
+                  <i class="text-primary fab fa-facebook fa-lg"></i>
+                  <!-- <span class="badge badge-danger navbar-badge">3</span> -->
+                </a>               
+              </li>
+              <li class="nav-item" (click)="this.Usuario.signInWithGoogle()" *ngIf="!this.Usuario.loggedIn">
+                <a class="nav-link" href="#">
+                  <i class="text-danger fab fa-google fa-lg"></i>
+                  <!-- <span class="badge badge-danger navbar-badge">3</span> -->
+                </a>               
+              </li>
+            <li class="nav-item dropdown user-menu" *ngIf="this.Usuario.loggedIn" >
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <h3>{{ this.Usuario.user.firstName }}</h3>                    
+                        <!-- <i class="far fa-user"></i> -->
+                        <!-- <span class="badge badge-warning navbar-badge">15</span> -->
+                </a>
+                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                  <!-- User image -->
+                  <li class="user-header bg-primary">
+                    <img [src] = "this.Usuario.user.photoUrl" class="img-circle elevation-2" alt="User Image">
+        
+                    <p>
+                      {{ this.Usuario.user.firstName+" "+this.Usuario.user.lastName }}
+                      <small>Member since Nov. 2012</small>
+                    </p>
+                  </li>
+                  <!-- Menu Body -->
+                  <li class="user-body">
+                    <div class="row">
+                      <div class="col-4 text-center">
+                        <a href="#" [routerLink]="['/producto-lista']">Lista</a>
+                      </div>
+                      <div class="col-4 text-center">
+                        <a href="#" [routerLink]="['/producto']">Crear</a>
+                      </div>
+                      <div class="col-4 text-center">
+                        <a href="#" [routerLink]="['/ventas']">Ventas</a>
+                      </div>
+                    </div>
+                    <!-- /.row -->
+                  </li>
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    <!-- <button class="btn btn-default btn-flat float-right" (click)="this.Usuario.Crear()">Crear</button> -->
+                    <button class="btn btn-default btn-flat float-right" (click)="this.Usuario.signOut()">Salir</button>
+                  </li>
+                </ul>
+            </li>            
+            <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                    <i class="fas fa-th-large"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
