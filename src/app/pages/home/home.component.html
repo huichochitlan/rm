@@ -3,8 +3,22 @@
     <div class = "row">
         <div class="box-tools">
             <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#" (click)="paginacion(-1)" >&laquo;</a></li>
+                <!-- <li><a href="#" (click)="paginacion(-1)" >&laquo;</a></li>
                 <li><a href="#" (click)="cargarPagina()"> {{ PaginaActual }}</a></li>                
+                <li><a href="#" (click)="paginacion(1)">&raquo;</a></li> -->
+            </ul>
+        </div>
+    </div>
+    <div class = "row">
+        <div class="box-tools">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#" (click)="paginacion(-1)" >&laquo;</a></li>
+                <li *ngFor="let n of numSequence(TotalPaginas); let i = index;">
+                    <a href="#" (click)="paginacion(i+1)" 
+                    [ngClass]="{
+                        'text-red': PaginaActual === i+1                        
+                        }"> {{ i+1 }}</a>
+                </li>                
                 <li><a href="#" (click)="paginacion(1)">&raquo;</a></li>
             </ul>
         </div>
