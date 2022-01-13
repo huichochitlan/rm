@@ -1,4 +1,16 @@
-<div class="container">
+
+<div class = "container">
+    <div class = "row">
+        <div class="box-tools">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#" (click)="paginacion(-1)" >&laquo;</a></li>
+                <li><a href="#" (click)="cargarPagina()"> {{ PaginaActual }}</a></li>                
+                <li><a href="#" (click)="paginacion(1)">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="listaPersonajes">
     <div class="row">
         <div class="col-3" *ngFor="let personaje of listaPersonajes">
             <div class="col-12">
@@ -7,9 +19,9 @@
             <div class="col-12">
                 <div class="text-center">
                     <h2>{{ personaje.name }}</h2>
-                    <p>{{ personaje.estatus }}<br>{{ personaje.type }}<br>{{ personaje.gender }}</p>        
-                </div>            
-            </div>                
-        </div>    
-    </div>    
+                    <p>{{ personaje.estatus }}<br>{{ personaje.type }}<br>{{ personaje.gender }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
